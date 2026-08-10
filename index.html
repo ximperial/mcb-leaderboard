@@ -70,23 +70,38 @@
     padding: 0.15rem 0.55rem;
     border-radius: 999px;
   }
-  .tables { display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: flex-start; }
+  .tabs {
+    display: flex;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  .tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    font-family: inherit;
+    padding: 0 0.1rem 0.6rem;
+    cursor: pointer;
+  }
+  .tab.active {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+  }
+  .tables { display: block; }
   .panel {
-    flex: 1;
-    min-width: 300px;
+    display: none;
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 1rem 1.1rem 0.5rem;
   }
-  .panel h3 {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-dim);
-    font-weight: 600;
-    margin: 0 0 0.6rem;
-  }
+  .panel.active { display: block; }
   .board { list-style: none; margin: 0; padding: 0; }
   .board .row {
     display: flex;
@@ -196,12 +211,13 @@
 <body>
 <header>
   <h1>MCB Leaderboard</h1>
-  <p class="updated">Last updated 2026-08-10 01:22 UTC &middot; refreshes automatically every 15 minutes</p>
+  <p class="updated">Last updated 2026-08-10 01:25 UTC &middot; refreshes automatically every 15 minutes</p>
 </header>
 <section class="category">
 <h2>FSA MCB <span class="season">season 1</span></h2>
+<div class="tabs"><button type="button" class="tab active" data-tab="ratings">Player ratings</button><button type="button" class="tab" data-tab="heroes">Hero win rates</button></div>
 <div class="tables">
-<div class="panel"><h3>Player ratings</h3><ol class="board" data-page-size="10">
+<div class="panel active" data-panel="ratings"><ol class="board" data-page-size="10">
 <li class="row gold"><span class="rank">1</span><div class="info"><span class="name">lostvayne</span><span class="sub">3 games</span></div><span class="stat">1546</span></li>
 <li class="row silver"><span class="rank">2</span><div class="info"><span class="name">godaikun</span><span class="sub">3 games</span></div><span class="stat">1522</span></li>
 <li class="row bronze"><span class="rank">3</span><div class="info"><span class="name">ximperial</span><span class="sub">4 games</span></div><span class="stat">1518</span></li>
@@ -222,7 +238,7 @@
 <li class="row "><span class="rank">18</span><div class="info"><span class="name">susuki</span><span class="sub">3 games</span></div><span class="stat">1479</span></li>
 <li class="row "><span class="rank">19</span><div class="info"><span class="name">luukihiep</span><span class="sub">3 games</span></div><span class="stat">1478</span></li>
 </ol><div class="pager"><button type="button" class="prev" aria-label="Previous page">&lsaquo;</button><span class="page-info">1 / 1</span><button type="button" class="next" aria-label="Next page">&rsaquo;</button></div></div>
-<div class="panel"><h3>Hero win rates</h3><ol class="board heroes" data-page-size="10">
+<div class="panel" data-panel="heroes"><ol class="board heroes" data-page-size="10">
 <li class="row gold"><span class="rank">1</span><span class="icon icon-fallback">F</span><div class="info"><span class="name">Firefly</span><span class="sub">1 game</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="wr-value">100%</span></span></li>
 <li class="row silver"><span class="rank">2</span><span class="icon icon-fallback">ヤ</span><div class="info"><span class="name">ヤヒコ</span><span class="sub">1 game</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="wr-value">100%</span></span></li>
 <li class="row bronze"><span class="rank">3</span><span class="icon icon-fallback">黒</span><div class="info"><span class="name">黒崎 一護</span><span class="sub">1 game</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="wr-value">100%</span></span></li>
@@ -252,6 +268,17 @@
 <footer>Generated from Aura bot match data.</footer>
 <script>
 (function() {
+  document.querySelectorAll(".category").forEach(function(section) {
+    var tabs = section.querySelectorAll(".tab");
+    var panels = section.querySelectorAll(".panel");
+    tabs.forEach(function(tab) {
+      tab.addEventListener("click", function() {
+        var target = tab.dataset.tab;
+        tabs.forEach(function(t) { t.classList.toggle("active", t === tab); });
+        panels.forEach(function(p) { p.classList.toggle("active", p.dataset.panel === target); });
+      });
+    });
+  });
   document.querySelectorAll(".board[data-page-size]").forEach(function(board) {
     var pageSize = parseInt(board.dataset.pageSize, 10) || 10;
     var rows = Array.prototype.filter.call(board.children, function(li) {
