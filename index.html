@@ -6,40 +6,36 @@
 <title>MCB Leaderboard</title>
 <style>
   :root {
-    color-scheme: light dark;
-    --accent: #57F287;
-    --accent-dim: #57f28733;
+    color-scheme: dark;
+    --accent: #1ed760;
+    --accent-ink: #121212;
     --gold: #f2c94c;
     --silver: #c4c9d4;
     --bronze: #d7935a;
-    --bg: #ffffff;
-    --panel: #f6f7f8;
-    --border: #e3e5e8;
-    --text: #1b1d21;
-    --text-dim: #6b7280;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #1b1d21;
-      --panel: #232529;
-      --border: #33363c;
-      --text: #f2f3f5;
-      --text-dim: #9aa0a8;
-    }
+    --bg: #121212;
+    --panel: #181818;
+    --surface: #1f1f1f;
+    --card: #252525;
+    --border: #4d4d4d;
+    --text: #ffffff;
+    --text-dim: #b3b3b3;
+    --shadow-card: rgba(0, 0, 0, 0.3) 0px 8px 8px;
+    --shadow-elevated: rgba(0, 0, 0, 0.5) 0px 8px 24px;
   }
   * { box-sizing: border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, "MS Gothic", sans-serif;
     max-width: 980px;
     margin: 0 auto;
     padding: 2rem 1.25rem 4rem;
-    line-height: 1.5;
+    line-height: 1.4;
     background: var(--bg);
     color: var(--text);
   }
   header { margin-bottom: 2.5rem; }
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
     margin: 0 0 0.35rem;
     display: flex;
     align-items: center;
@@ -52,54 +48,55 @@
     background: var(--accent);
     display: inline-block;
   }
-  .updated { color: var(--text-dim); font-size: 0.85rem; }
+  .updated { color: var(--text-dim); font-size: 0.75rem; }
   .category { margin-bottom: 3rem; }
   .category h2 {
-    font-size: 1.2rem;
+    font-size: 1.13rem;
+    font-weight: 600;
     margin: 0 0 1rem;
     display: flex;
     align-items: baseline;
     gap: 0.6rem;
   }
   .category h2 .season {
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-size: 0.66rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     color: var(--text-dim);
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 0.15rem 0.55rem;
-    border-radius: 999px;
+    background: var(--surface);
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
   }
   .tabs {
     display: flex;
-    gap: 1.5rem;
-    border-bottom: 1px solid var(--border);
+    gap: 0.5rem;
     margin-bottom: 1rem;
   }
   .tab {
-    background: none;
+    background: var(--surface);
     border: none;
-    border-bottom: 2px solid transparent;
     color: var(--text-dim);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-weight: 700;
     font-family: inherit;
-    padding: 0 0.1rem 0.6rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 9999px;
     cursor: pointer;
   }
   .tab.active {
-    color: var(--text);
-    border-bottom-color: var(--accent);
+    color: var(--accent-ink);
+    background: var(--accent);
   }
   .tables { display: block; }
   .panel {
     display: none;
     background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 1rem 1.1rem 0.5rem;
+    box-shadow: var(--shadow-card);
   }
   .panel.active { display: block; }
   .board { list-style: none; margin: 0; padding: 0; }
@@ -108,8 +105,8 @@
     align-items: center;
     gap: 0.6rem;
     padding: 0.5rem 0.25rem;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.92rem;
+    border-bottom: 1px solid var(--surface);
+    font-size: 0.88rem;
   }
   .board .row:last-child { border-bottom: none; }
   .rank {
@@ -117,26 +114,27 @@
     text-align: center;
     color: var(--text-dim);
     font-variant-numeric: tabular-nums;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 700;
   }
-  .row.gold .rank { color: var(--gold); font-weight: 700; }
-  .row.silver .rank { color: var(--silver); font-weight: 700; }
-  .row.bronze .rank { color: var(--bronze); font-weight: 700; }
+  .row.gold .rank { color: var(--gold); }
+  .row.silver .rank { color: var(--silver); }
+  .row.bronze .rank { color: var(--bronze); }
   .info {
     flex: 1 1 auto;
     min-width: 0;
     display: flex;
     flex-direction: column;
   }
-  .name { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .name { font-weight: 700; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .stat {
     flex: 0 0 auto;
     font-variant-numeric: tabular-nums;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--accent);
   }
   .sub {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     color: var(--text-dim);
   }
   .icon {
@@ -144,14 +142,14 @@
     width: 28px; height: 28px;
     border-radius: 6px;
     object-fit: cover;
-    background: var(--border);
+    background: var(--surface);
     display: block;
   }
   .icon-fallback {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     color: var(--text-dim);
   }
@@ -163,19 +161,19 @@
   }
   .bar {
     width: 60px; height: 6px;
-    background: var(--border);
-    border-radius: 999px;
+    background: var(--surface);
+    border-radius: 9999px;
     overflow: hidden;
   }
   .bar .fill { height: 100%; background: var(--accent); }
   .wr-value {
     font-variant-numeric: tabular-nums;
-    font-weight: 600;
-    font-size: 0.85rem;
+    font-weight: 700;
+    font-size: 0.8rem;
     min-width: 2.4em;
     text-align: right;
   }
-  .empty { color: var(--text-dim); font-style: italic; font-size: 0.85rem; padding: 0.5rem 0.25rem; }
+  .empty { color: var(--text-dim); font-style: italic; font-size: 0.8rem; padding: 0.5rem 0.25rem; }
   .pager {
     display: flex;
     align-items: center;
@@ -184,10 +182,10 @@
     padding: 0.6rem 0.25rem 0.4rem;
   }
   .pager button {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: var(--surface);
+    border: none;
     color: var(--text);
-    border-radius: 6px;
+    border-radius: 50%;
     width: 1.8rem;
     height: 1.8rem;
     font-size: 1rem;
@@ -199,19 +197,19 @@
     cursor: default;
   }
   .pager .page-info {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     color: var(--text-dim);
     font-variant-numeric: tabular-nums;
     min-width: 3.5em;
     text-align: center;
   }
-  footer { margin-top: 3rem; color: var(--text-dim); font-size: 0.78rem; text-align: center; }
+  footer { margin-top: 3rem; color: var(--text-dim); font-size: 0.72rem; text-align: center; }
 </style>
 </head>
 <body>
 <header>
   <h1>MCB Leaderboard</h1>
-  <p class="updated">Last updated 2026-08-10 02:00 UTC &middot; refreshes automatically every 15 minutes</p>
+  <p class="updated">Last updated 2026-08-10 02:11 UTC &middot; refreshes automatically every 15 minutes</p>
 </header>
 <section class="category">
 <h2>FSA MCB <span class="season">season 1</span></h2>
