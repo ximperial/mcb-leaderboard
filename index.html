@@ -89,19 +89,17 @@
   }
   .board { list-style: none; margin: 0; padding: 0; }
   .board .row {
-    display: grid;
-    grid-template-columns: 1.5rem 1fr auto;
+    display: flex;
     align-items: center;
     gap: 0.6rem;
     padding: 0.5rem 0.25rem;
     border-bottom: 1px solid var(--border);
     font-size: 0.92rem;
   }
-  .board.heroes .row {
-    grid-template-columns: 1.5rem 1.75rem 1fr auto;
-  }
   .board .row:last-child { border-bottom: none; }
   .rank {
+    flex: 0 0 1.5rem;
+    text-align: center;
     color: var(--text-dim);
     font-variant-numeric: tabular-nums;
     font-size: 0.85rem;
@@ -109,20 +107,25 @@
   .row.gold .rank { color: var(--gold); font-weight: 700; }
   .row.silver .rank { color: var(--silver); font-weight: 700; }
   .row.bronze .rank { color: var(--bronze); font-weight: 700; }
+  .info {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
   .name { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .stat {
+    flex: 0 0 auto;
     font-variant-numeric: tabular-nums;
     font-weight: 600;
     color: var(--accent);
-    grid-row: 1;
   }
   .sub {
-    grid-column: 2 / -1;
     font-size: 0.78rem;
     color: var(--text-dim);
   }
-  .board.heroes .sub { grid-column: 3 / -1; }
   .icon {
+    flex: 0 0 auto;
     width: 28px; height: 28px;
     border-radius: 6px;
     object-fit: cover;
@@ -138,10 +141,10 @@
     color: var(--text-dim);
   }
   .winrate {
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    justify-self: end;
   }
   .bar {
     width: 60px; height: 6px;
@@ -164,48 +167,48 @@
 <body>
 <header>
   <h1>MCB Leaderboard</h1>
-  <p class="updated">Last updated 2026-08-10 01:15 UTC &middot; refreshes automatically every 15 minutes</p>
+  <p class="updated">Last updated 2026-08-10 01:17 UTC &middot; refreshes automatically every 15 minutes</p>
 </header>
 <section class="category">
 <h2>FSA MCB <span class="season">season 1</span></h2>
 <div class="tables">
 <div class="panel"><h3>Player ratings</h3><ol class="board">
-<li class="row gold"><span class="rank">1</span><span class="name">lostvayne</span><span class="stat">1546</span><span class="sub">3 games</span></li>
-<li class="row silver"><span class="rank">2</span><span class="name">godaikun</span><span class="stat">1522</span><span class="sub">3 games</span></li>
-<li class="row bronze"><span class="rank">3</span><span class="name">ximperial</span><span class="stat">1518</span><span class="sub">4 games</span></li>
-<li class="row "><span class="rank">4</span><span class="name">asakuratoru</span><span class="stat">1516</span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">5</span><span class="name">rimurut</span><span class="stat">1516</span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">6</span><span class="name">leonardo_watch</span><span class="stat">1516</span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">7</span><span class="name">suzakuhyperdry</span><span class="stat">1516</span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">8</span><span class="name">akiyama-mio</span><span class="stat">1500</span><span class="sub">3 games</span></li>
-<li class="row "><span class="rank">9</span><span class="name">dhseh852</span><span class="stat">1495</span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">10</span><span class="name">kakak</span><span class="stat">1492</span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">11</span><span class="name">zetsubou</span><span class="stat">1492</span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">12</span><span class="name">issei</span><span class="stat">1492</span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">13</span><span class="name">ouka</span><span class="stat">1492</span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">14</span><span class="name">teradestroyer13</span><span class="stat">1487</span><span class="sub">2 games</span></li>
-<li class="row "><span class="rank">15</span><span class="name">starking01</span><span class="stat">1487</span><span class="sub">2 games</span></li>
-<li class="row "><span class="rank">16</span><span class="name">windy-tan</span><span class="stat">1487</span><span class="sub">2 games</span></li>
-<li class="row "><span class="rank">17</span><span class="name">aony</span><span class="stat">1480</span><span class="sub">3 games</span></li>
-<li class="row "><span class="rank">18</span><span class="name">susuki</span><span class="stat">1479</span><span class="sub">3 games</span></li>
-<li class="row "><span class="rank">19</span><span class="name">luukihiep</span><span class="stat">1478</span><span class="sub">3 games</span></li>
+<li class="row gold"><span class="rank">1</span><div class="info"><span class="name">lostvayne</span><span class="sub">3 games</span></div><span class="stat">1546</span></li>
+<li class="row silver"><span class="rank">2</span><div class="info"><span class="name">godaikun</span><span class="sub">3 games</span></div><span class="stat">1522</span></li>
+<li class="row bronze"><span class="rank">3</span><div class="info"><span class="name">ximperial</span><span class="sub">4 games</span></div><span class="stat">1518</span></li>
+<li class="row "><span class="rank">4</span><div class="info"><span class="name">asakuratoru</span><span class="sub">1 game</span></div><span class="stat">1516</span></li>
+<li class="row "><span class="rank">5</span><div class="info"><span class="name">rimurut</span><span class="sub">1 game</span></div><span class="stat">1516</span></li>
+<li class="row "><span class="rank">6</span><div class="info"><span class="name">leonardo_watch</span><span class="sub">1 game</span></div><span class="stat">1516</span></li>
+<li class="row "><span class="rank">7</span><div class="info"><span class="name">suzakuhyperdry</span><span class="sub">1 game</span></div><span class="stat">1516</span></li>
+<li class="row "><span class="rank">8</span><div class="info"><span class="name">akiyama-mio</span><span class="sub">3 games</span></div><span class="stat">1500</span></li>
+<li class="row "><span class="rank">9</span><div class="info"><span class="name">dhseh852</span><span class="sub">1 game</span></div><span class="stat">1495</span></li>
+<li class="row "><span class="rank">10</span><div class="info"><span class="name">kakak</span><span class="sub">1 game</span></div><span class="stat">1492</span></li>
+<li class="row "><span class="rank">11</span><div class="info"><span class="name">zetsubou</span><span class="sub">1 game</span></div><span class="stat">1492</span></li>
+<li class="row "><span class="rank">12</span><div class="info"><span class="name">issei</span><span class="sub">1 game</span></div><span class="stat">1492</span></li>
+<li class="row "><span class="rank">13</span><div class="info"><span class="name">ouka</span><span class="sub">1 game</span></div><span class="stat">1492</span></li>
+<li class="row "><span class="rank">14</span><div class="info"><span class="name">teradestroyer13</span><span class="sub">2 games</span></div><span class="stat">1487</span></li>
+<li class="row "><span class="rank">15</span><div class="info"><span class="name">starking01</span><span class="sub">2 games</span></div><span class="stat">1487</span></li>
+<li class="row "><span class="rank">16</span><div class="info"><span class="name">windy-tan</span><span class="sub">2 games</span></div><span class="stat">1487</span></li>
+<li class="row "><span class="rank">17</span><div class="info"><span class="name">aony</span><span class="sub">3 games</span></div><span class="stat">1480</span></li>
+<li class="row "><span class="rank">18</span><div class="info"><span class="name">susuki</span><span class="sub">3 games</span></div><span class="stat">1479</span></li>
+<li class="row "><span class="rank">19</span><div class="info"><span class="name">luukihiep</span><span class="sub">3 games</span></div><span class="stat">1478</span></li>
 </ol></div>
 <div class="panel"><h3>Hero win rates</h3><ol class="board heroes">
-<li class="row gold"><span class="rank">1</span><span class="icon icon-fallback">F</span><span class="name">Firefly</span><span class="winrate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="wr-value">100%</span></span><span class="sub">1 game</span></li>
-<li class="row silver"><span class="rank">2</span><span class="icon icon-fallback">ヤ</span><span class="name">ヤヒコ</span><span class="winrate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="wr-value">100%</span></span><span class="sub">1 game</span></li>
-<li class="row bronze"><span class="rank">3</span><span class="icon icon-fallback">黒</span><span class="name">黒崎 一護</span><span class="winrate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="wr-value">100%</span></span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">4</span><span class="icon icon-fallback">S</span><span class="name">Shirosaki</span><span class="winrate"><span class="bar"><span class="fill" style="width:67%"></span></span><span class="wr-value">67%</span></span><span class="sub">3 games</span></li>
-<li class="row "><span class="rank">5</span><span class="icon icon-fallback">ロ</span><span class="name">ロロノア・ゾロ</span><span class="winrate"><span class="bar"><span class="fill" style="width:50%"></span></span><span class="wr-value">50%</span></span><span class="sub">4 games</span></li>
-<li class="row "><span class="rank">6</span><span class="icon icon-fallback">E</span><span class="name">EX 4 身勝手の極意</span><span class="winrate"><span class="bar"><span class="fill" style="width:50%"></span></span><span class="wr-value">50%</span></span><span class="sub">2 games</span></li>
-<li class="row "><span class="rank">7</span><span class="icon icon-fallback">黒</span><span class="name">黒鉄一輝</span><span class="winrate"><span class="bar"><span class="fill" style="width:50%"></span></span><span class="wr-value">50%</span></span><span class="sub">2 games</span></li>
-<li class="row "><span class="rank">8</span><span class="icon icon-fallback">ア</span><span class="name">アルトリア・ペンドラゴン</span><span class="winrate"><span class="bar"><span class="fill" style="width:33%"></span></span><span class="wr-value">33%</span></span><span class="sub">3 games</span></li>
-<li class="row "><span class="rank">9</span><span class="icon icon-fallback">L</span><span class="name">Lucia</span><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span><span class="sub">2 games</span></li>
-<li class="row "><span class="rank">10</span><span class="icon icon-fallback">M</span><span class="name">Mastered Ultra Instinct Powered</span><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span><span class="sub">2 games</span></li>
-<li class="row "><span class="rank">11</span><span class="icon icon-fallback">黒</span><span class="name">黒崎 一護断界</span><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span><span class="sub">2 games</span></li>
-<li class="row "><span class="rank">12</span><span class="icon icon-fallback">A</span><span class="name">Aoi no Hono Senshi</span><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">13</span><span class="icon icon-fallback">K</span><span class="name">Kenshiro</span><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">14</span><span class="icon icon-fallback">K</span><span class="name">Kiana Kaslana</span><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span><span class="sub">1 game</span></li>
-<li class="row "><span class="rank">15</span><span class="icon icon-fallback">S</span><span class="name">Saber Alter</span><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span><span class="sub">1 game</span></li>
+<li class="row gold"><span class="rank">1</span><span class="icon icon-fallback">F</span><div class="info"><span class="name">Firefly</span><span class="sub">1 game</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="wr-value">100%</span></span></li>
+<li class="row silver"><span class="rank">2</span><span class="icon icon-fallback">ヤ</span><div class="info"><span class="name">ヤヒコ</span><span class="sub">1 game</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="wr-value">100%</span></span></li>
+<li class="row bronze"><span class="rank">3</span><span class="icon icon-fallback">黒</span><div class="info"><span class="name">黒崎 一護</span><span class="sub">1 game</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:100%"></span></span><span class="wr-value">100%</span></span></li>
+<li class="row "><span class="rank">4</span><span class="icon icon-fallback">S</span><div class="info"><span class="name">Shirosaki</span><span class="sub">3 games</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:67%"></span></span><span class="wr-value">67%</span></span></li>
+<li class="row "><span class="rank">5</span><span class="icon icon-fallback">ロ</span><div class="info"><span class="name">ロロノア・ゾロ</span><span class="sub">4 games</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:50%"></span></span><span class="wr-value">50%</span></span></li>
+<li class="row "><span class="rank">6</span><span class="icon icon-fallback">E</span><div class="info"><span class="name">EX 4 身勝手の極意</span><span class="sub">2 games</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:50%"></span></span><span class="wr-value">50%</span></span></li>
+<li class="row "><span class="rank">7</span><span class="icon icon-fallback">黒</span><div class="info"><span class="name">黒鉄一輝</span><span class="sub">2 games</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:50%"></span></span><span class="wr-value">50%</span></span></li>
+<li class="row "><span class="rank">8</span><span class="icon icon-fallback">ア</span><div class="info"><span class="name">アルトリア・ペンドラゴン</span><span class="sub">3 games</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:33%"></span></span><span class="wr-value">33%</span></span></li>
+<li class="row "><span class="rank">9</span><span class="icon icon-fallback">L</span><div class="info"><span class="name">Lucia</span><span class="sub">2 games</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span></li>
+<li class="row "><span class="rank">10</span><span class="icon icon-fallback">M</span><div class="info"><span class="name">Mastered Ultra Instinct Powered</span><span class="sub">2 games</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span></li>
+<li class="row "><span class="rank">11</span><span class="icon icon-fallback">黒</span><div class="info"><span class="name">黒崎 一護断界</span><span class="sub">2 games</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span></li>
+<li class="row "><span class="rank">12</span><span class="icon icon-fallback">A</span><div class="info"><span class="name">Aoi no Hono Senshi</span><span class="sub">1 game</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span></li>
+<li class="row "><span class="rank">13</span><span class="icon icon-fallback">K</span><div class="info"><span class="name">Kenshiro</span><span class="sub">1 game</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span></li>
+<li class="row "><span class="rank">14</span><span class="icon icon-fallback">K</span><div class="info"><span class="name">Kiana Kaslana</span><span class="sub">1 game</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span></li>
+<li class="row "><span class="rank">15</span><span class="icon icon-fallback">S</span><div class="info"><span class="name">Saber Alter</span><span class="sub">1 game</span></div><span class="winrate"><span class="bar"><span class="fill" style="width:0%"></span></span><span class="wr-value">0%</span></span></li>
 </ol></div>
 </div></section>
 <footer>Generated from Aura bot match data.</footer>
