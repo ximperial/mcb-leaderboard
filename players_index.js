@@ -1,0 +1,1 @@
+var PLAYERS_INDEX = [];
