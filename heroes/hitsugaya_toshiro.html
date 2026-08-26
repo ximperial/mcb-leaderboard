@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>bocchi - MCB Leaderboard</title>
+<title>Hitsugaya Toshiro - MCB Leaderboard</title>
 <style>
 
   :root { color-scheme: dark; --bg:#121212; --card:#1a1a1a; --card2:#121212; --accent:#1ed760;
@@ -96,6 +96,11 @@
   .rm-draw { background:#242424; color:var(--muted); }
   .rm-detail { color:var(--dim); font-size:.75rem; }
 
+
+  .hero-players-table .row { grid-template-columns: 1fr 80px 60px 130px 55px 55px; }
+  .hero-players-table .hp-matches, .hero-players-table .hp-wr,
+  .hero-players-table .hp-kda, .hero-players-table .hp-gpm, .hero-players-table .hp-xpm { color:var(--dim); font-size:.75rem; }
+
 </style>
 </head>
 <body>
@@ -103,7 +108,7 @@
   <header class="topbar">
     <div class="topbar-left">
       <a class="back-link" href="../index.html">&lsaquo; Back to leaderboard</a>
-      <a class="back-link" href="../heroes/index.html">All Heroes</a>
+      <a class="back-link" href="index.html">All Heroes</a>
     </div>
     <div class="topbar-right">
       <div class="search"><input id="search-input" type="text" placeholder="Search player..." autocomplete="off">
@@ -112,39 +117,23 @@
     </div>
   </header>
   <div class="profile-head">
-    <img class="hicon" width="56" height="56" src="../icons/FSA_MCB/megami_no_mahou_shoujo.png" alt="" loading="lazy">
+    <img class="hicon" width="56" height="56" src="../icons/FSA_MCB/hitsugaya_toshiro.png" alt="" loading="lazy">
     <div class="profile-name">
-      <div class="profile-title">bocchi</div>
-      <div class="profile-sub">Rank #24 &middot; FSA MCB &middot; Season 1</div>
+      <div class="profile-title">Hitsugaya Toshiro</div>
+      <div class="profile-sub">FSA MCB &middot; Season 1</div>
     </div>
-    <div class="profile-elo">1434</div>
   </div>
   <div class="dashboard tiles4">
-    <div class="tile"><div class="tile-label">Matches</div><div class="tile-value">5</div></div>
-    <div class="tile"><div class="tile-label">Win rate</div><div class="tile-value accent">0%</div></div>
-    <div class="tile"><div class="tile-label">Avg K/D/A</div><div class="tile-value small">22.2 / 33.0 / 7.4</div></div>
-    <div class="tile"><div class="tile-label">Avg APM</div><div class="tile-value">104</div></div>
+    <div class="tile"><div class="tile-label">Total matches</div><div class="tile-value">1</div></div>
+    <div class="tile"><div class="tile-label">Overall W/R</div><div class="tile-value accent">0%</div></div>
+    <div class="tile"><div class="tile-label">Avg K/D/A</div><div class="tile-value small">45.0 / 33.0 / 13.0</div></div>
+    <div class="tile"><div class="tile-label">Avg APM</div><div class="tile-value">166</div></div>
   </div>
-  <div class="side-by-side">
-    <div class="side-card"><div class="side-label">RIVAL</div><a class="p-link" href="efreet17.html">efreet17</a><div class="side-sub">faced 3 times</div></div>
-    <div class="side-card"><div class="side-label">BEST ALLY</div><div class="side-sub">Not enough data yet.</div></div>
-  </div>
-  <div class="section-label">HEROES USED</div>
-  <div class="table hero-table">
-    <div class="row header"><span></span><span class="hu-name">HERO</span><span class="hu-matches">MATCHES</span>
-      <span class="hu-wr">W/R</span><span class="hu-gpm">GPM</span><span class="hu-xpm">XPM</span></div>
-    <div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/megami_no_mahou_shoujo.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/megami_no_mahou_shoujo.html">Megami no Mahou Shoujo</a><span class="hu-matches">2</span><span class="hu-wr">0%</span><span class="hu-gpm">774</span><span class="hu-xpm">2115</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/カルナ.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/カルナ.html">カルナ</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-gpm">354</span><span class="hu-xpm">0</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/satsujinki.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/satsujinki.html">Satsujinki</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-gpm">676</span><span class="hu-xpm">2438</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/kiana_kaslana.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/kiana_kaslana.html">Kiana Kaslana</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-gpm">643</span><span class="hu-xpm">2085</span></div>
-  </div>
-  <div class="section-label">RECENT MATCHES</div>
-  <div class="table recent-table">
-    <div class="row"><span class="rm-date">27 Aug</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">17/46/5 &middot; Kiana Kaslana</span></div>
-<div class="row"><span class="rm-date">26 Aug</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">36/35/15 &middot; Megami no Mahou Shoujo</span></div>
-<div class="row"><span class="rm-date">26 Aug</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">29/46/10 &middot; Satsujinki</span></div>
-<div class="row"><span class="rm-date">26 Aug</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">11/13/0 &middot; カルナ</span></div>
-<div class="row"><span class="rm-date">26 Aug</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">18/25/7 &middot; Megami no Mahou Shoujo</span></div>
+  <div class="section-label">PLAYED BY</div>
+  <div class="table hero-players-table">
+    <div class="row header"><span class="hp-name">PLAYER</span><span class="hp-matches">MATCHES</span>
+      <span class="hp-wr">W/R</span><span class="hp-kda">AVG K/D/A</span><span class="hp-gpm">GPM</span><span class="hp-xpm">XPM</span></div>
+    <div class="row"><a class="p-link hp-name" href="../players/efreet17.html">efreet17</a><span class="hp-matches">1</span><span class="hp-wr">0%</span><span class="hp-kda">45.0 / 33.0 / 13.0</span><span class="hp-gpm">791</span><span class="hp-xpm">2699</span></div>
   </div>
 </div>
 <script src="../players_index.js"></script>
