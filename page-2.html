@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ロロノア・ゾロ - MCB Leaderboard</title>
+<title>MCB Leaderboard</title>
 <style>
 
   :root { color-scheme: dark; --bg:#121212; --card:#1a1a1a; --card2:#121212; --accent:#1ed760;
@@ -68,76 +68,47 @@
   .pagination a { color:var(--muted); font-size:.78rem; padding:.3rem .6rem; text-decoration:none; border-radius:5px; }
   .pagination .page-num.active { background:var(--accent); color:#0a2e14; font-weight:500; }
 
-
-  .topbar-left { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
-  .back-link { color: var(--link); text-decoration: none; font-size: .8rem; }
-  .profile-head { display:flex; align-items:center; gap:1rem; margin: 1rem 0 1.1rem; }
-  .profile-head .hicon { width:56px; height:56px; }
-  .profile-title { font-size:1.35rem; font-weight:500; }
-  .profile-sub { color:var(--muted); font-size:.75rem; }
-  .profile-elo { margin-left:auto; font-size:1.7rem; font-weight:500; color:var(--accent); }
-  .tiles4 { grid-template-columns:repeat(4,1fr); }
-  .tile-value.small { font-size:1rem; }
-  .side-by-side { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-bottom:1.1rem; }
-  .side-card { background:var(--card); border-radius:8px; padding:.75rem .85rem; }
-  .side-card:hover { background: #1c1c1c; }
-  .side-label { color:var(--muted); font-size:.62rem; font-weight:500; letter-spacing:.03em; margin-bottom:.4rem; }
-  .side-sub { color:var(--muted); font-size:.68rem; }
-  .side-sub.accent { color:var(--accent); }
-  .section-label { color:var(--muted); font-size:.62rem; font-weight:500; letter-spacing:.03em; margin: 1rem 0 .4rem; }
-  .hero-table .row { grid-template-columns: 20px 1fr 70px 55px 55px 55px; }
-  .hero-table .hu-matches, .hero-table .hu-wr, .hero-table .hu-gpm, .hero-table .hu-xpm { color:var(--dim); font-size:.75rem; }
-  .hero-table .hicon { width:16px; height:16px; }
-  .recent-table .row { grid-template-columns: 60px 50px 1fr; padding:.5rem; }
-  .rm-date { color:var(--muted); font-size:.72rem; }
-  .rm-result { font-size:.62rem; font-weight:500; padding:.15rem .4rem; border-radius:5px; text-align:center; }
-  .rm-win { background:#182a0d; color:#3b6d11; }
-  .rm-loss { background:#2a1a12; color:#993c1d; }
-  .rm-draw { background:#242424; color:var(--muted); }
-  .rm-detail { color:var(--dim); font-size:.75rem; }
-
-
-  .hero-players-table .row { grid-template-columns: 1fr 80px 60px 130px 55px 55px; }
-  .hero-players-table .hp-matches, .hero-players-table .hp-wr,
-  .hero-players-table .hp-kda, .hero-players-table .hp-gpm, .hero-players-table .hp-xpm { color:var(--dim); font-size:.75rem; }
-
 </style>
 </head>
 <body>
 <div class="page">
   <header class="topbar">
-    <div class="topbar-left">
-      <a class="back-link" href="../index.html">&lsaquo; Back to leaderboard</a>
-      <a class="back-link" href="index.html">All Heroes</a>
-    </div>
+    <div class="brand"><span class="dot"></span>MCB Leaderboard</div>
     <div class="topbar-right">
+      <a class="nav-link" href="heroes/index.html">All Heroes</a>
       <div class="search"><input id="search-input" type="text" placeholder="Search player..." autocomplete="off">
         <div id="search-results" class="search-results"></div>
       </div>
+      <span class="updated">updated 27 Aug 2026 16:45 WIB</span>
     </div>
   </header>
-  <div class="profile-head">
-    <img class="hicon" width="56" height="56" src="../icons/FSA_MCB/ロロノア_ゾロ.png" alt="" loading="lazy">
-    <div class="profile-name">
-      <div class="profile-title">ロロノア・ゾロ</div>
-      <div class="profile-sub">FSA MCB &middot; Season 1</div>
-    </div>
-  </div>
-  <div class="dashboard tiles4">
-    <div class="tile"><div class="tile-label">Total matches</div><div class="tile-value">3</div></div>
-    <div class="tile"><div class="tile-label">Overall W/R</div><div class="tile-value accent">33%</div></div>
-    <div class="tile"><div class="tile-label">Avg K/D/A</div><div class="tile-value small">34.3 / 27.0 / 8.7</div></div>
-    <div class="tile"><div class="tile-label">Avg APM</div><div class="tile-value">118</div></div>
-  </div>
-  <div class="section-label">PLAYED BY</div>
-  <div class="table hero-players-table">
-    <div class="row header"><span class="hp-name">PLAYER</span><span class="hp-matches">MATCHES</span>
-      <span class="hp-wr">W/R</span><span class="hp-kda">AVG K/D/A</span><span class="hp-gpm">GPM</span><span class="hp-xpm">XPM</span></div>
-    <div class="row"><a class="p-link hp-name" href="../players/luukihiep.html">luukihiep</a><span class="hp-matches">2</span><span class="hp-wr">50%</span><span class="hp-kda">39.0 / 23.0 / 7.5</span><span class="hp-gpm">857</span><span class="hp-xpm">2710</span></div>
-<div class="row"><a class="p-link hp-name" href="../players/axelmamat1.html">axelmamat1</a><span class="hp-matches">1</span><span class="hp-wr">0%</span><span class="hp-kda">25.0 / 35.0 / 11.0</span><span class="hp-gpm">645</span><span class="hp-xpm">2237</span></div>
-  </div>
+  
+<div class="dashboard">
+  <div class="tile"><div class="tile-label">Total matches</div><div class="tile-value">7</div></div>
+  <div class="tile"><div class="tile-label">Ranked players</div><div class="tile-value">26</div></div>
+  <div class="tile"><div class="tile-label">Top hero</div><div class="tile-value">Ragna</div></div>
+  <div class="tile"><div class="tile-label">Highest win rate</div><div class="tile-value accent">57% <span class="tile-sub">ximperial</span></div></div>
 </div>
-<script src="../players_index.js"></script>
+  
+<div class="filters">
+  <span class="chip chip-active">1</span>
+  <span class="chip">FSA MCB</span>
+</div>
+  
+  <div class="table">
+    <div class="row header">
+      <span class="c-rank">#</span><span class="c-player">PLAYER</span><span class="c-hero">MAIN HERO</span>
+      <span class="c-wr">W/R</span><span class="c-kda">AVG K/D/A</span><span class="c-apm">APM</span><span class="c-elo">ELO</span>
+    </div>
+    <div class="row"><span class="c-rank">26</span><a class="p-link c-player" href="players/plmzanaja.html">plmzanaja</a><span class="c-hero"><img class="hicon" width="16" height="16" src="icons/FSA_MCB/codename_555-sb.png" alt="" loading="lazy"><a class="p-link" href="heroes/codename_555-sb.html">『Codename 555-SB』</a></span><span class="c-wr">0%</span><span class="c-kda">37.3 / 41.0 / 9.0</span><span class="c-apm">100</span><span class="c-elo">1458</span></div>
+  </div>
+  <div class="pagination">
+<a class="page-nav" href="index.html">&lsaquo; Prev</a>
+<a class="page-num" href="index.html">1</a>
+<a class="page-num active" href="page-2.html">2</a>
+</div>
+</div>
+<script src="players_index.js"></script>
 <script>
 (function() {
   var input = document.getElementById("search-input");
@@ -150,7 +121,7 @@
     if (!matches.length) { box.style.display = "none"; return; }
     matches.forEach(function(p) {
       var a = document.createElement("a");
-      a.href = "../" + p.href; a.className = "search-result";
+      a.href = p.href; a.className = "search-result";
       a.textContent = p.name + " (" + Math.round(p.rating) + ")";
       box.appendChild(a);
     });
