@@ -54,7 +54,7 @@
   .podium-elo { font-size:1.1rem; font-weight:500; }
   .gold .podium-elo { color:var(--gold); } .silver .podium-elo { color:var(--silver); } .bronze .podium-elo { color:var(--bronze); }
   .table { border-top:1px solid #262626; overflow-x:auto; -webkit-overflow-scrolling:touch; }
-  .row { display:grid; grid-template-columns:32px 1fr 150px 70px 130px 60px 70px; gap:.6rem;
+  .row { display:grid; grid-template-columns:32px 1fr 150px 70px 130px 120px 60px 70px; gap:.6rem;
     align-items:center; padding:.55rem .5rem; border-bottom:1px solid #1a1a1a; font-size:.78rem;
     width:max-content; min-width:100%; }
   .row:not(.header):not(.empty):hover { background: #1c1c1c; }
@@ -62,7 +62,7 @@
   .row.empty { color:var(--muted); font-style:italic; width:auto; min-width:0; }
   .c-rank { color:var(--dim); } .c-elo { text-align:right; color:var(--accent); }
   .c-hero { display:flex; align-items:center; gap:.4rem; } .c-hero .hicon { width:16px; height:16px; }
-  .c-wr, .c-apm { color:var(--dim); } .c-kda { color:var(--dim); }
+  .c-wr, .c-apm { color:var(--dim); } .c-kda, .c-dmg { color:var(--dim); }
   .dim { color: var(--muted); }
   .pagination { display:flex; justify-content:center; align-items:center; gap:.4rem; margin-top:1.25rem; }
   .pagination a { color:var(--muted); font-size:.78rem; padding:.3rem .6rem; text-decoration:none; border-radius:5px; }
@@ -77,6 +77,8 @@
   .profile-sub { color:var(--muted); font-size:.75rem; }
   .profile-elo { margin-left:auto; font-size:1.7rem; font-weight:500; color:var(--accent); }
   .tiles4 { grid-template-columns:repeat(4,1fr); }
+  /* 6 tile ditata 3x2, bukan 4+2 yang bikin baris kedua nyisa timpang. */
+  .tiles6 { grid-template-columns:repeat(3,1fr); }
   .tile-value.small { font-size:1rem; }
   .side-by-side { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-bottom:1.1rem; }
   .side-card { background:var(--card); border-radius:8px; padding:.75rem .85rem; }
@@ -85,8 +87,9 @@
   .side-sub { color:var(--muted); font-size:.68rem; }
   .side-sub.accent { color:var(--accent); }
   .section-label { color:var(--muted); font-size:.62rem; font-weight:500; letter-spacing:.03em; margin: 1rem 0 .4rem; }
-  .hero-table .row { grid-template-columns: 20px 1fr 70px 55px 55px 55px; }
-  .hero-table .hu-matches, .hero-table .hu-wr, .hero-table .hu-gpm, .hero-table .hu-xpm { color:var(--dim); font-size:.75rem; }
+  .hero-table .row { grid-template-columns: 20px 1fr 70px 55px 120px 55px 55px; }
+  .hero-table .hu-matches, .hero-table .hu-wr, .hero-table .hu-dmg,
+  .hero-table .hu-gpm, .hero-table .hu-xpm { color:var(--dim); font-size:.75rem; }
   .hero-table .hicon { width:16px; height:16px; }
   .recent-table .row { grid-template-columns: 60px 50px 1fr; padding:.5rem; }
   .rm-date { color:var(--muted); font-size:.72rem; }
@@ -95,11 +98,12 @@
   .rm-loss { background:#2a1a12; color:#993c1d; }
   .rm-draw { background:#242424; color:var(--muted); }
   .rm-detail { color:var(--dim); font-size:.75rem; }
+  .rm-dmg { color:var(--muted); }
 
 
-  .hero-players-table .row { grid-template-columns: 1fr 80px 60px 130px 55px 55px; }
-  .hero-players-table .hp-matches, .hero-players-table .hp-wr,
-  .hero-players-table .hp-kda, .hero-players-table .hp-gpm, .hero-players-table .hp-xpm { color:var(--dim); font-size:.75rem; }
+  .hero-players-table .row { grid-template-columns: 1fr 80px 60px 130px 120px 55px 55px; }
+  .hero-players-table .hp-matches, .hero-players-table .hp-wr, .hero-players-table .hp-kda,
+  .hero-players-table .hp-dmg, .hero-players-table .hp-gpm, .hero-players-table .hp-xpm { color:var(--dim); font-size:.75rem; }
 
 </style>
 </head>
@@ -123,22 +127,24 @@
       <div class="profile-sub">FSA MCB &middot; Season 1</div>
     </div>
   </div>
-  <div class="dashboard tiles4">
+  <div class="dashboard tiles6">
     <div class="tile"><div class="tile-label">Total matches</div><div class="tile-value">6</div></div>
     <div class="tile"><div class="tile-label">Overall W/R</div><div class="tile-value accent">50%</div></div>
     <div class="tile"><div class="tile-label">Avg K/D/A</div><div class="tile-value small">40.5 / 42.0 / 12.7</div></div>
     <div class="tile"><div class="tile-label">Avg APM</div><div class="tile-value">133</div></div>
+    <div class="tile"><div class="tile-label">Avg DMG dealt</div><div class="tile-value">199.2k</div></div>
+    <div class="tile"><div class="tile-label">Avg DMG taken</div><div class="tile-value">187.1k</div></div>
   </div>
   <div class="section-label">PLAYED BY</div>
   <div class="table hero-players-table">
     <div class="row header"><span class="hp-name">PLAYER</span><span class="hp-matches">MATCHES</span>
-      <span class="hp-wr">W/R</span><span class="hp-kda">AVG K/D/A</span><span class="hp-gpm">GPM</span><span class="hp-xpm">XPM</span></div>
-    <div class="row"><a class="p-link hp-name" href="../players/nefasturris.html">nefasturris</a><span class="hp-matches">1</span><span class="hp-wr">0%</span><span class="hp-kda">21.0 / 47.0 / 7.0</span><span class="hp-gpm">524</span><span class="hp-xpm">2033</span></div>
-<div class="row"><a class="p-link hp-name" href="../players/joemarcello3.html">joemarcello3</a><span class="hp-matches">1</span><span class="hp-wr">0%</span><span class="hp-kda">50.0 / 43.0 / 8.0</span><span class="hp-gpm">955</span><span class="hp-xpm">2459</span></div>
-<div class="row"><a class="p-link hp-name" href="../players/kaneki-ken.html">kaneki-ken</a><span class="hp-matches">1</span><span class="hp-wr">100%</span><span class="hp-kda">50.0 / 25.0 / 10.0</span><span class="hp-gpm">921</span><span class="hp-xpm">2492</span></div>
-<div class="row"><a class="p-link hp-name" href="../players/aony.html">aony</a><span class="hp-matches">1</span><span class="hp-wr">100%</span><span class="hp-kda">35.0 / 44.0 / 17.0</span><span class="hp-gpm">613</span><span class="hp-xpm">2707</span></div>
-<div class="row"><a class="p-link hp-name" href="../players/ximperial.html">ximperial</a><span class="hp-matches">1</span><span class="hp-wr">100%</span><span class="hp-kda">34.0 / 51.0 / 25.0</span><span class="hp-gpm">877</span><span class="hp-xpm">2307</span></div>
-<div class="row"><a class="p-link hp-name" href="../players/deepdarkfantasy.html">deepdarkfantasy</a><span class="hp-matches">1</span><span class="hp-wr">0%</span><span class="hp-kda">53.0 / 42.0 / 9.0</span><span class="hp-gpm">823</span><span class="hp-xpm">2519</span></div>
+      <span class="hp-wr">W/R</span><span class="hp-kda">AVG K/D/A</span><span class="hp-dmg">AVG DMG D/T</span><span class="hp-gpm">GPM</span><span class="hp-xpm">XPM</span></div>
+    <div class="row"><a class="p-link hp-name" href="../players/nefasturris.html">nefasturris</a><span class="hp-matches">1</span><span class="hp-wr">0%</span><span class="hp-kda">21.0 / 47.0 / 7.0</span><span class="hp-dmg">142.7k / 196.2k</span><span class="hp-gpm">524</span><span class="hp-xpm">2033</span></div>
+<div class="row"><a class="p-link hp-name" href="../players/joemarcello3.html">joemarcello3</a><span class="hp-matches">1</span><span class="hp-wr">0%</span><span class="hp-kda">50.0 / 43.0 / 8.0</span><span class="hp-dmg">258.4k / 221.4k</span><span class="hp-gpm">955</span><span class="hp-xpm">2459</span></div>
+<div class="row"><a class="p-link hp-name" href="../players/kaneki-ken.html">kaneki-ken</a><span class="hp-matches">1</span><span class="hp-wr">100%</span><span class="hp-kda">50.0 / 25.0 / 10.0</span><span class="hp-dmg">205.1k / 118.8k</span><span class="hp-gpm">921</span><span class="hp-xpm">2492</span></div>
+<div class="row"><a class="p-link hp-name" href="../players/aony.html">aony</a><span class="hp-matches">1</span><span class="hp-wr">100%</span><span class="hp-kda">35.0 / 44.0 / 17.0</span><span class="hp-dmg">126.7k / 179.4k</span><span class="hp-gpm">613</span><span class="hp-xpm">2707</span></div>
+<div class="row"><a class="p-link hp-name" href="../players/ximperial.html">ximperial</a><span class="hp-matches">1</span><span class="hp-wr">100%</span><span class="hp-kda">34.0 / 51.0 / 25.0</span><span class="hp-dmg">199.8k / 187.8k</span><span class="hp-gpm">877</span><span class="hp-xpm">2307</span></div>
+<div class="row"><a class="p-link hp-name" href="../players/deepdarkfantasy.html">deepdarkfantasy</a><span class="hp-matches">1</span><span class="hp-wr">0%</span><span class="hp-kda">53.0 / 42.0 / 9.0</span><span class="hp-dmg">262.4k / 219.4k</span><span class="hp-gpm">823</span><span class="hp-xpm">2519</span></div>
   </div>
 </div>
 <script src="../players_index.js"></script>
