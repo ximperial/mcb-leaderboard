@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>susuki - MCB Leaderboard</title>
+<title>Amiya - MCB Leaderboard</title>
 <style>
 
   :root { color-scheme: dark; --bg:#121212; --card:#1a1a1a; --card2:#121212; --accent:#1ed760;
@@ -100,6 +100,11 @@
   .rm-detail { color:var(--dim); font-size:.75rem; }
   .rm-dmg { color:var(--muted); }
 
+
+  .hero-players-table .row { grid-template-columns: 1fr 80px 60px 130px 120px 55px 55px; }
+  .hero-players-table .hp-matches, .hero-players-table .hp-wr, .hero-players-table .hp-kda,
+  .hero-players-table .hp-dmg, .hero-players-table .hp-gpm, .hero-players-table .hp-xpm { color:var(--dim); font-size:.75rem; }
+
 </style>
 </head>
 <body>
@@ -107,7 +112,7 @@
   <header class="topbar">
     <div class="topbar-left">
       <a class="back-link" href="../index.html">&lsaquo; Back to leaderboard</a>
-      <a class="back-link" href="../heroes/index.html">All Heroes</a>
+      <a class="back-link" href="index.html">All Heroes</a>
     </div>
     <div class="topbar-right">
       <div class="search"><input id="search-input" type="text" placeholder="Search player..." autocomplete="off">
@@ -116,42 +121,25 @@
     </div>
   </header>
   <div class="profile-head">
-    <img class="hicon" width="56" height="56" src="../icons/FSA_MCB/七夜志貴.png" alt="" loading="lazy">
+    <img class="hicon" width="56" height="56" src="../icons/FSA_MCB/amiya.png" alt="" loading="lazy">
     <div class="profile-name">
-      <div class="profile-title">susuki</div>
-      <div class="profile-sub">Rank #39 &middot; FSA MCB &middot; Season 1</div>
+      <div class="profile-title">Amiya</div>
+      <div class="profile-sub">FSA MCB &middot; Season 1</div>
     </div>
-    <div class="profile-elo">1436</div>
   </div>
   <div class="dashboard tiles6">
-    <div class="tile"><div class="tile-label">Matches</div><div class="tile-value">5</div></div>
-    <div class="tile"><div class="tile-label">Win rate</div><div class="tile-value accent">0%</div></div>
-    <div class="tile"><div class="tile-label">Avg K/D/A</div><div class="tile-value small">23.4 / 36.0 / 10.8</div></div>
-    <div class="tile"><div class="tile-label">Avg APM</div><div class="tile-value">110</div></div>
-    <div class="tile"><div class="tile-label">Avg DMG dealt</div><div class="tile-value">100.7k</div></div>
-    <div class="tile"><div class="tile-label">Avg DMG taken</div><div class="tile-value">127.6k</div></div>
+    <div class="tile"><div class="tile-label">Total matches</div><div class="tile-value">1</div></div>
+    <div class="tile"><div class="tile-label">Overall W/R</div><div class="tile-value accent">100%</div></div>
+    <div class="tile"><div class="tile-label">Avg K/D/A</div><div class="tile-value small">44.0 / 21.0 / 6.0</div></div>
+    <div class="tile"><div class="tile-label">Avg APM</div><div class="tile-value">99</div></div>
+    <div class="tile"><div class="tile-label">Avg DMG dealt</div><div class="tile-value">132.4k</div></div>
+    <div class="tile"><div class="tile-label">Avg DMG taken</div><div class="tile-value">65.8k</div></div>
   </div>
-  <div class="side-by-side">
-    <div class="side-card"><div class="side-label">RIVAL</div><a class="p-link" href="ximperial.html">ximperial</a><div class="side-sub">faced 4 times</div></div>
-    <div class="side-card"><div class="side-label">BEST ALLY</div><div class="side-sub">Not enough data yet.</div></div>
-  </div>
-  <div class="section-label">HEROES USED</div>
-  <div class="table hero-table">
-    <div class="row header"><span></span><span class="hu-name">HERO</span><span class="hu-matches">MATCHES</span>
-      <span class="hu-wr">W/R</span><span class="hu-dmg">DMG D/T</span><span class="hu-gpm">GPM</span><span class="hu-xpm">XPM</span></div>
-    <div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/akaza.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/akaza.html">Akaza</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">77.0k / 85.0k</span><span class="hu-gpm">715</span><span class="hu-xpm">0</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/不明なる共演者.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/不明なる共演者.html">不明なる共演者</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">145.3k / 137.7k</span><span class="hu-gpm">741</span><span class="hu-xpm">2360</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/竈門_炭治郎.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/竈門_炭治郎.html">竈門 炭治郎</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">151.0k / 170.6k</span><span class="hu-gpm">844</span><span class="hu-xpm">2626</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/joker.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/joker.html">【Joker】</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">77.2k / 157.4k</span><span class="hu-gpm">687</span><span class="hu-xpm">1877</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/七夜志貴.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/七夜志貴.html">『七夜志貴』</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">53.1k / 87.5k</span><span class="hu-gpm">581</span><span class="hu-xpm">1691</span></div>
-  </div>
-  <div class="section-label">RECENT MATCHES</div>
-  <div class="table recent-table">
-    <div class="row"><span class="rm-date">29 Aug</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">14/30/8 &middot; 『七夜志貴』 &middot; <span class="rm-dmg">53.1k / 87.5k</span></span></div>
-<div class="row"><span class="rm-date">29 Aug</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">16/50/7 &middot; 【Joker】 &middot; <span class="rm-dmg">77.2k / 157.4k</span></span></div>
-<div class="row"><span class="rm-date">27 Aug</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">30/40/21 &middot; 竈門 炭治郎 &middot; <span class="rm-dmg">151.0k / 170.6k</span></span></div>
-<div class="row"><span class="rm-date">26 Aug</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">34/29/12 &middot; 不明なる共演者 &middot; <span class="rm-dmg">145.3k / 137.7k</span></span></div>
-<div class="row"><span class="rm-date">26 Aug</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">23/31/6 &middot; Akaza &middot; <span class="rm-dmg">77.0k / 85.0k</span></span></div>
+  <div class="section-label">PLAYED BY</div>
+  <div class="table hero-players-table">
+    <div class="row header"><span class="hp-name">PLAYER</span><span class="hp-matches">MATCHES</span>
+      <span class="hp-wr">W/R</span><span class="hp-kda">AVG K/D/A</span><span class="hp-dmg">AVG DMG D/T</span><span class="hp-gpm">GPM</span><span class="hp-xpm">XPM</span></div>
+    <div class="row"><a class="p-link hp-name" href="../players/plmzanaja.html">plmzanaja</a><span class="hp-matches">1</span><span class="hp-wr">100%</span><span class="hp-kda">44.0 / 21.0 / 6.0</span><span class="hp-dmg">132.4k / 65.8k</span><span class="hp-gpm">834</span><span class="hp-xpm">2301</span></div>
   </div>
 </div>
 <script src="../players_index.js"></script>
