@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>luukihiep - MCB Leaderboard</title>
+<title>KenshinEx - MCB Leaderboard</title>
 <style>
 
   :root { color-scheme: dark; --bg:#121212; --card:#1a1a1a; --card2:#121212; --accent:#1ed760;
@@ -100,6 +100,11 @@
   .rm-detail { color:var(--dim); font-size:.75rem; }
   .rm-dmg { color:var(--muted); }
 
+
+  .hero-players-table .row { grid-template-columns: 1fr 80px 60px 130px 120px 55px 55px; }
+  .hero-players-table .hp-matches, .hero-players-table .hp-wr, .hero-players-table .hp-kda,
+  .hero-players-table .hp-dmg, .hero-players-table .hp-gpm, .hero-players-table .hp-xpm { color:var(--dim); font-size:.75rem; }
+
 </style>
 </head>
 <body>
@@ -107,7 +112,7 @@
   <header class="topbar">
     <div class="topbar-left">
       <a class="back-link" href="../index.html">&lsaquo; Back to leaderboard</a>
-      <a class="back-link" href="../heroes/index.html">All Heroes</a>
+      <a class="back-link" href="index.html">All Heroes</a>
     </div>
     <div class="topbar-right">
       <div class="search"><input id="search-input" type="text" placeholder="Search player..." autocomplete="off">
@@ -116,53 +121,25 @@
     </div>
   </header>
   <div class="profile-head">
-    <img class="hicon" width="56" height="56" src="../icons/FSA_MCB/ロロノア_ゾロ.png" alt="" loading="lazy">
+    <img class="hicon" width="56" height="56" src="../icons/FSA_MCB/kenshinex.png" alt="" loading="lazy">
     <div class="profile-name">
-      <div class="profile-title">luukihiep</div>
-      <div class="profile-sub">Rank #32 &middot; FSA MCB &middot; Season 1</div>
+      <div class="profile-title">KenshinEx</div>
+      <div class="profile-sub">FSA MCB &middot; Season 1</div>
     </div>
-    <div class="profile-elo">1482</div>
   </div>
   <div class="dashboard tiles6">
-    <div class="tile"><div class="tile-label">Matches</div><div class="tile-value">16</div></div>
-    <div class="tile"><div class="tile-label">Win rate</div><div class="tile-value accent">31%</div></div>
-    <div class="tile"><div class="tile-label">Avg K/D/A</div><div class="tile-value small">45.3 / 36.0 / 9.7</div></div>
+    <div class="tile"><div class="tile-label">Total matches</div><div class="tile-value">1</div></div>
+    <div class="tile"><div class="tile-label">Overall W/R</div><div class="tile-value accent">0%</div></div>
+    <div class="tile"><div class="tile-label">Avg K/D/A</div><div class="tile-value small">17.0 / 46.0 / 8.0</div></div>
     <div class="tile"><div class="tile-label">Avg APM</div><div class="tile-value">128</div></div>
-    <div class="tile"><div class="tile-label">Avg DMG dealt</div><div class="tile-value">218.3k</div></div>
-    <div class="tile"><div class="tile-label">Avg DMG taken</div><div class="tile-value">172.2k</div></div>
+    <div class="tile"><div class="tile-label">Avg DMG dealt</div><div class="tile-value">117.0k</div></div>
+    <div class="tile"><div class="tile-label">Avg DMG taken</div><div class="tile-value">174.2k</div></div>
   </div>
-  <div class="side-by-side">
-    <div class="side-card"><div class="side-label">RIVAL</div><a class="p-link" href="2ba3-nyannyan.html">2ba3-nyannyan</a><div class="side-sub">faced 8 times</div></div>
-    <div class="side-card"><div class="side-label">BEST ALLY</div><a class="p-link" href="starking01.html">starking01</a><div class="side-sub accent">50% WR together &middot; 4 matches</div></div>
-  </div>
-  <div class="section-label">HEROES USED</div>
-  <div class="table hero-table">
-    <div class="row header"><span></span><span class="hu-name">HERO</span><span class="hu-matches">MATCHES</span>
-      <span class="hu-wr">W/R</span><span class="hu-dmg">DMG D/T</span><span class="hu-gpm">GPM</span><span class="hu-xpm">XPM</span></div>
-    <div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/ロロノア_ゾロ.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/ロロノア_ゾロ.html">ロロノア・ゾロ</a><span class="hu-matches">5</span><span class="hu-wr">40%</span><span class="hu-dmg">196.8k / 149.0k</span><span class="hu-gpm">804</span><span class="hu-xpm">2435</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/ragna.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/ragna.html">Ragna</a><span class="hu-matches">2</span><span class="hu-wr">0%</span><span class="hu-dmg">152.7k / 152.9k</span><span class="hu-gpm">667</span><span class="hu-xpm">2115</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/孫_悟飯.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/孫_悟飯.html">孫 悟飯</a><span class="hu-matches">1</span><span class="hu-wr">100%</span><span class="hu-dmg">174.9k / 134.1k</span><span class="hu-gpm">801</span><span class="hu-xpm">2502</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/the_strongest.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/the_strongest.html">The Strongest</a><span class="hu-matches">1</span><span class="hu-wr">100%</span><span class="hu-dmg">339.4k / 196.0k</span><span class="hu-gpm">1571</span><span class="hu-xpm">2739</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/レゼ.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/レゼ.html">レゼ</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">294.9k / 161.0k</span><span class="hu-gpm">1006</span><span class="hu-xpm">2971</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/kenshiro.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/kenshiro.html">Kenshiro</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">201.6k / 249.1k</span><span class="hu-gpm">1013</span><span class="hu-xpm">2484</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/ヤヒコ.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/ヤヒコ.html">ヤヒコ</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">249.1k / 210.4k</span><span class="hu-gpm">741</span><span class="hu-xpm">2433</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/斬撃の花.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/斬撃の花.html">『斬撃の花』</a><span class="hu-matches">1</span><span class="hu-wr">100%</span><span class="hu-dmg">215.9k / 188.2k</span><span class="hu-gpm">846</span><span class="hu-xpm">2516</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/satsujinki.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/satsujinki.html">Satsujinki</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">292.0k / 202.0k</span><span class="hu-gpm">861</span><span class="hu-xpm">2687</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/孫悟飯.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/孫悟飯.html">孫悟飯</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">167.3k / 144.0k</span><span class="hu-gpm">724</span><span class="hu-xpm">2422</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/ex_oni_モンキー_d_ルフィ.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/ex_oni_モンキー_d_ルフィ.html">EX Oni モンキー・D・ルフィ</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">268.8k / 220.1k</span><span class="hu-gpm">2458</span><span class="hu-xpm">2435</span></div>
-  </div>
-  <div class="section-label">RECENT MATCHES</div>
-  <div class="table recent-table">
-    <div class="row"><span class="rm-date">02 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">46/47/11 &middot; EX Oni モンキー・D・ルフィ &middot; <span class="rm-dmg">268.8k / 220.1k</span></span></div>
-<div class="row"><span class="rm-date">02 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">29/42/7 &middot; ロロノア・ゾロ &middot; <span class="rm-dmg">155.9k / 151.5k</span></span></div>
-<div class="row"><span class="rm-date">02 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">70/26/10 &middot; レゼ &middot; <span class="rm-dmg">294.9k / 161.0k</span></span></div>
-<div class="row"><span class="rm-date">02 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">40/40/6 &middot; 孫悟飯 &middot; <span class="rm-dmg">167.3k / 144.0k</span></span></div>
-<div class="row"><span class="rm-date">02 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">60/35/13 &middot; Satsujinki &middot; <span class="rm-dmg">292.0k / 202.0k</span></span></div>
-<div class="row"><span class="rm-date">02 Sep</span><span class="rm-result rm-win">WIN</span><span class="rm-detail">52/42/10 &middot; 『斬撃の花』 &middot; <span class="rm-dmg">215.9k / 188.2k</span></span></div>
-<div class="row"><span class="rm-date">01 Sep</span><span class="rm-result rm-win">WIN</span><span class="rm-detail">63/33/9 &middot; The Strongest &middot; <span class="rm-dmg">339.4k / 196.0k</span></span></div>
-<div class="row"><span class="rm-date">01 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">58/42/12 &middot; ロロノア・ゾロ &middot; <span class="rm-dmg">321.4k / 242.3k</span></span></div>
-<div class="row"><span class="rm-date">31 Aug</span><span class="rm-result rm-win">WIN</span><span class="rm-detail">49/46/7 &middot; ロロノア・ゾロ &middot; <span class="rm-dmg">237.4k / 183.3k</span></span></div>
-<div class="row"><span class="rm-date">31 Aug</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">38/40/15 &middot; ヤヒコ &middot; <span class="rm-dmg">249.1k / 210.4k</span></span></div>
+  <div class="section-label">PLAYED BY</div>
+  <div class="table hero-players-table">
+    <div class="row header"><span class="hp-name">PLAYER</span><span class="hp-matches">MATCHES</span>
+      <span class="hp-wr">W/R</span><span class="hp-kda">AVG K/D/A</span><span class="hp-dmg">AVG DMG D/T</span><span class="hp-gpm">GPM</span><span class="hp-xpm">XPM</span></div>
+    <div class="row"><a class="p-link hp-name" href="../players/dhseh852.html">dhseh852</a><span class="hp-matches">1</span><span class="hp-wr">0%</span><span class="hp-kda">17.0 / 46.0 / 8.0</span><span class="hp-dmg">117.0k / 174.2k</span><span class="hp-gpm">609</span><span class="hp-xpm">1935</span></div>
   </div>
 </div>
 <script src="../players_index.js"></script>
