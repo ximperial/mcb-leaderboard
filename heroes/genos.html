@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>godaikun - MCB Leaderboard</title>
+<title>Genos - MCB Leaderboard</title>
 <style>
 
   :root { color-scheme: dark; --bg:#121212; --card:#1a1a1a; --card2:#121212; --accent:#1ed760;
@@ -100,6 +100,11 @@
   .rm-detail { color:var(--dim); font-size:.75rem; }
   .rm-dmg { color:var(--muted); }
 
+
+  .hero-players-table .row { grid-template-columns: 1fr 80px 60px 130px 120px 55px 55px; }
+  .hero-players-table .hp-matches, .hero-players-table .hp-wr, .hero-players-table .hp-kda,
+  .hero-players-table .hp-dmg, .hero-players-table .hp-gpm, .hero-players-table .hp-xpm { color:var(--dim); font-size:.75rem; }
+
 </style>
 </head>
 <body>
@@ -107,7 +112,7 @@
   <header class="topbar">
     <div class="topbar-left">
       <a class="back-link" href="../index.html">&lsaquo; Back to leaderboard</a>
-      <a class="back-link" href="../heroes/index.html">All Heroes</a>
+      <a class="back-link" href="index.html">All Heroes</a>
     </div>
     <div class="topbar-right">
       <div class="search"><input id="search-input" type="text" placeholder="Search player..." autocomplete="off">
@@ -116,49 +121,25 @@
     </div>
   </header>
   <div class="profile-head">
-    <img class="hicon" width="56" height="56" src="../icons/FSA_MCB/ex_4_身勝手の極意.png" alt="" loading="lazy">
+    <img class="hicon" width="56" height="56" src="../icons/FSA_MCB/genos.png" alt="" loading="lazy">
     <div class="profile-name">
-      <div class="profile-title">godaikun</div>
-      <div class="profile-sub">Rank #25 &middot; FSA MCB &middot; Season 1</div>
+      <div class="profile-title">Genos</div>
+      <div class="profile-sub">FSA MCB &middot; Season 1</div>
     </div>
-    <div class="profile-elo">1508</div>
   </div>
   <div class="dashboard tiles6">
-    <div class="tile"><div class="tile-label">Matches</div><div class="tile-value">16</div></div>
-    <div class="tile"><div class="tile-label">Win rate</div><div class="tile-value accent">31%</div></div>
-    <div class="tile"><div class="tile-label">Avg K/D/A</div><div class="tile-value small">38.8 / 38.4 / 10.9</div></div>
-    <div class="tile"><div class="tile-label">Avg APM</div><div class="tile-value">140</div></div>
-    <div class="tile"><div class="tile-label">Avg DMG dealt</div><div class="tile-value">196.7k</div></div>
-    <div class="tile"><div class="tile-label">Avg DMG taken</div><div class="tile-value">164.7k</div></div>
+    <div class="tile"><div class="tile-label">Total matches</div><div class="tile-value">1</div></div>
+    <div class="tile"><div class="tile-label">Overall W/R</div><div class="tile-value accent">0%</div></div>
+    <div class="tile"><div class="tile-label">Avg K/D/A</div><div class="tile-value small">12.0 / 7.0 / 2.0</div></div>
+    <div class="tile"><div class="tile-label">Avg APM</div><div class="tile-value">145</div></div>
+    <div class="tile"><div class="tile-label">Avg DMG dealt</div><div class="tile-value">63.9k</div></div>
+    <div class="tile"><div class="tile-label">Avg DMG taken</div><div class="tile-value">12.7k</div></div>
   </div>
-  <div class="side-by-side">
-    <div class="side-card"><div class="side-label">RIVAL</div><a class="p-link" href="ximperial.html">ximperial</a><div class="side-sub">faced 10 times</div></div>
-    <div class="side-card"><div class="side-label">BEST ALLY</div><a class="p-link" href="susuki.html">susuki</a><div class="side-sub accent">33% WR together &middot; 3 matches</div></div>
-  </div>
-  <div class="section-label">HEROES USED</div>
-  <div class="table hero-table">
-    <div class="row header"><span></span><span class="hu-name">HERO</span><span class="hu-matches">MATCHES</span>
-      <span class="hu-wr">W/R</span><span class="hu-dmg">DMG D/T</span><span class="hu-gpm">GPM</span><span class="hu-xpm">XPM</span></div>
-    <div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/ex_4_身勝手の極意.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/ex_4_身勝手の極意.html">EX 4 身勝手の極意</a><span class="hu-matches">5</span><span class="hu-wr">0%</span><span class="hu-dmg">217.6k / 178.6k</span><span class="hu-gpm">749</span><span class="hu-xpm">2591</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/千魂の刃.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/千魂の刃.html">『千魂の刃』</a><span class="hu-matches">4</span><span class="hu-wr">50%</span><span class="hu-dmg">189.6k / 162.5k</span><span class="hu-gpm">1024</span><span class="hu-xpm">2420</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/the_strongest.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/the_strongest.html">The Strongest</a><span class="hu-matches">2</span><span class="hu-wr">50%</span><span class="hu-dmg">192.2k / 109.6k</span><span class="hu-gpm">680</span><span class="hu-xpm">1193</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/ヤヒコ.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/ヤヒコ.html">ヤヒコ</a><span class="hu-matches">2</span><span class="hu-wr">0%</span><span class="hu-dmg">206.9k / 185.3k</span><span class="hu-gpm">840</span><span class="hu-xpm">1193</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/ゴクウブラック.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/ゴクウブラック.html">ゴクウブラック</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">145.9k / 149.3k</span><span class="hu-gpm">710</span><span class="hu-xpm">2259</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/megami_no_mahou_shoujo_ex.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/megami_no_mahou_shoujo_ex.html">Megami no Mahou Shoujo EX</a><span class="hu-matches">1</span><span class="hu-wr">0%</span><span class="hu-dmg">140.8k / 163.9k</span><span class="hu-gpm">736</span><span class="hu-xpm">2197</span></div>
-<div class="row"><img class="hicon" width="16" height="16" src="../icons/FSA_MCB/完全で瀟洒なメイド.png" alt="" loading="lazy"><a class="p-link hu-name" href="../heroes/完全で瀟洒なメイド.html">【完全で瀟洒なメイド】</a><span class="hu-matches">1</span><span class="hu-wr">100%</span><span class="hu-dmg">215.8k / 188.7k</span><span class="hu-gpm">655</span><span class="hu-xpm">2330</span></div>
-  </div>
-  <div class="section-label">RECENT MATCHES</div>
-  <div class="table recent-table">
-    <div class="row"><span class="rm-date">08 Sep</span><span class="rm-result rm-win">WIN</span><span class="rm-detail">36/31/14 &middot; 『千魂の刃』 &middot; <span class="rm-dmg">231.3k / 125.5k</span></span></div>
-<div class="row"><span class="rm-date">08 Sep</span><span class="rm-result rm-win">WIN</span><span class="rm-detail">37/45/16 &middot; The Strongest &middot; <span class="rm-dmg">274.9k / 164.5k</span></span></div>
-<div class="row"><span class="rm-date">08 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">26/28/3 &middot; The Strongest &middot; <span class="rm-dmg">109.6k / 54.7k</span></span></div>
-<div class="row"><span class="rm-date">06 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">48/40/8 &middot; EX 4 身勝手の極意 &middot; <span class="rm-dmg">290.2k / 159.8k</span></span></div>
-<div class="row"><span class="rm-date">06 Sep</span><span class="rm-result rm-win">WIN</span><span class="rm-detail">36/42/15 &middot; 【完全で瀟洒なメイド】 &middot; <span class="rm-dmg">215.8k / 188.7k</span></span></div>
-<div class="row"><span class="rm-date">05 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">57/42/16 &middot; ヤヒコ &middot; <span class="rm-dmg">288.6k / 223.1k</span></span></div>
-<div class="row"><span class="rm-date">05 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">48/41/11 &middot; EX 4 身勝手の極意 &middot; <span class="rm-dmg">252.3k / 172.1k</span></span></div>
-<div class="row"><span class="rm-date">02 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">43/42/18 &middot; EX 4 身勝手の極意 &middot; <span class="rm-dmg">160.8k / 213.7k</span></span></div>
-<div class="row"><span class="rm-date">02 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">29/40/15 &middot; Megami no Mahou Shoujo EX &middot; <span class="rm-dmg">140.8k / 163.9k</span></span></div>
-<div class="row"><span class="rm-date">01 Sep</span><span class="rm-result rm-loss">LOSS</span><span class="rm-detail">37/39/4 &middot; ゴクウブラック &middot; <span class="rm-dmg">145.9k / 149.3k</span></span></div>
+  <div class="section-label">PLAYED BY</div>
+  <div class="table hero-players-table">
+    <div class="row header"><span class="hp-name">PLAYER</span><span class="hp-matches">MATCHES</span>
+      <span class="hp-wr">W/R</span><span class="hp-kda">AVG K/D/A</span><span class="hp-dmg">AVG DMG D/T</span><span class="hp-gpm">GPM</span><span class="hp-xpm">XPM</span></div>
+    <div class="row"><a class="p-link hp-name" href="../players/luukihiep.html">luukihiep</a><span class="hp-matches">1</span><span class="hp-wr">0%</span><span class="hp-kda">12.0 / 7.0 / 2.0</span><span class="hp-dmg">63.9k / 12.7k</span><span class="hp-gpm">257</span><span class="hp-xpm">0</span></div>
   </div>
 </div>
 <script src="../players_index.js"></script>
