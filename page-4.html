@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCB Leaderboard</title>
+<style>
+
+  :root { color-scheme: dark; --bg:#121212; --card:#1a1a1a; --card2:#121212; --accent:#1ed760;
+    --gold:#f2c94c; --silver:#c4c9d4; --bronze:#d7935a; --text:#ffffff; --dim:#b3b3b3; --muted:#767676;
+    --link:#3d8fd6; --link-underline:#2a4a63; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text);
+    font-family: Helvetica Neue, Helvetica, Arial, "Hiragino Sans", Meiryo, sans-serif; }
+  .page { max-width: 1040px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; }
+  a.p-link { color: var(--text); text-decoration: none; }
+  a.p-link:hover { color: var(--link); text-decoration: underline; text-decoration-color: var(--link-underline); }
+  .topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.25rem; gap:1rem; flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:.6rem; font-size:1.25rem; font-weight:500; }
+  .dot { width:11px; height:11px; border-radius:50%; background:var(--accent); display:inline-block; }
+  .topbar-right { display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; justify-content:flex-end; }
+  .search { position:relative; }
+  .search input { background:var(--card); border:none; border-radius:8px; padding:.4rem .7rem; color:var(--text);
+    font-size:.8rem; width:200px; }
+  .search-results { display:none; position:absolute; top:110%; left:0; right:0; background:var(--card);
+    border-radius:8px; overflow:hidden; z-index:5; box-shadow: 0 4px 16px rgba(0,0,0,.4); }
+  .search-result { display:block; padding:.45rem .7rem; font-size:.8rem; color:var(--text); text-decoration:none; }
+  .search-result:hover { background:#242424; }
+  .nav-link { color:var(--muted); font-size:.8rem; text-decoration:none; }
+  .nav-link:hover { color:var(--link); text-decoration:underline; }
+  .updated { color:var(--muted); font-size:.75rem; white-space:nowrap; }
+  .dashboard { display:grid; grid-template-columns:repeat(4,1fr); gap:.6rem; margin-bottom:1.1rem; }
+  .tile { background:var(--card); border-radius:8px; padding:.7rem .85rem; }
+  .tile-label { color:var(--muted); font-size:.65rem; }
+  .tile-value { font-size:1.25rem; font-weight:500; }
+  .tile-value.accent { color:var(--accent); }
+  .tile-sub { color:var(--muted); font-size:.68rem; font-weight:400; }
+  .filters { display:flex; gap:.5rem; margin-bottom:1.1rem; }
+  .chip { background:var(--card); color:var(--muted); font-size:.68rem; font-weight:500; padding:.25rem .7rem; border-radius:12px; }
+  .chip-active { background:var(--accent); color:#0a2e14; }
+  .podium { display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem; margin-bottom:1.4rem; }
+  .podium-card { background:var(--card); border-radius:10px; padding:1.1rem .85rem; text-align:center; }
+  .podium-card:hover { background: #1c1c1c; }
+  .podium-card.gold { border:1px solid var(--gold); }
+  .podium-rank { font-size:1.4rem; font-weight:500; color:var(--dim); }
+  .gold .podium-rank { color:var(--gold); font-size:1.6rem; }
+  .silver .podium-rank { color:var(--silver); }
+  .bronze .podium-rank { color:var(--bronze); }
+  .hicon { border-radius:4px; background:#2a2a2a; display:inline-block; object-fit:cover; vertical-align:middle; }
+  .hicon-empty { background:#2a2a2a; border-radius:4px; }
+  .podium-card .hicon { width:44px; height:44px; margin:.5rem auto; display:block; }
+  .podium-name { display:block; font-size:.85rem; margin-bottom:.15rem; }
+  .podium-sub { color:var(--muted); font-size:.68rem; margin-bottom:.4rem; }
+  .podium-elo { font-size:1.1rem; font-weight:500; }
+  .gold .podium-elo { color:var(--gold); } .silver .podium-elo { color:var(--silver); } .bronze .podium-elo { color:var(--bronze); }
+  .table { border-top:1px solid #262626; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .row { display:grid; grid-template-columns:32px 1fr 150px 70px 130px 120px 60px 70px; gap:.6rem;
+    align-items:center; padding:.55rem .5rem; border-bottom:1px solid #1a1a1a; font-size:.78rem;
+    width:max-content; min-width:100%; }
+  .row:not(.header):not(.empty):hover { background: #1c1c1c; }
+  .row.header { color:var(--muted); font-size:.62rem; font-weight:500; letter-spacing:.03em; border-bottom:1px solid #262626; }
+  .row.empty { color:var(--muted); font-style:italic; width:auto; min-width:0; }
+  .c-rank { color:var(--dim); } .c-elo { text-align:right; color:var(--accent); }
+  .c-hero { display:flex; align-items:center; gap:.4rem; } .c-hero .hicon { width:16px; height:16px; }
+  .c-wr, .c-apm { color:var(--dim); } .c-kda, .c-dmg { color:var(--dim); }
+  .dim { color: var(--muted); }
+  .pagination { display:flex; justify-content:center; align-items:center; gap:.4rem; margin-top:1.25rem; }
+  .pagination a { color:var(--muted); font-size:.78rem; padding:.3rem .6rem; text-decoration:none; border-radius:5px; }
+  .pagination .page-num.active { background:var(--accent); color:#0a2e14; font-weight:500; }
+
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <div class="brand"><span class="dot"></span>MCB Leaderboard</div>
+    <div class="topbar-right">
+      <a class="nav-link" href="heroes/index.html">All Heroes</a>
+      <div class="search"><input id="search-input" type="text" placeholder="Search player..." autocomplete="off">
+        <div id="search-results" class="search-results"></div>
+      </div>
+      <span class="updated">updated 13 Oct 2026 20:00 WIB</span>
+    </div>
+  </header>
+  
+<div class="dashboard">
+  <div class="tile"><div class="tile-label">Total matches</div><div class="tile-value">210</div></div>
+  <div class="tile"><div class="tile-label">Ranked players</div><div class="tile-value">76</div></div>
+  <div class="tile"><div class="tile-label">Top hero</div><div class="tile-value">Ragna</div></div>
+  <div class="tile"><div class="tile-label">Highest win rate</div><div class="tile-value accent">85% <span class="tile-sub">greenoptic</span></div></div>
+</div>
+  
+<div class="filters">
+  <span class="chip chip-active">1</span>
+  <span class="chip">FSA MCB</span>
+</div>
+  
+  <div class="table">
+    <div class="row header">
+      <span class="c-rank">#</span><span class="c-player">PLAYER</span><span class="c-hero">MAIN HERO</span>
+      <span class="c-wr">W/R</span><span class="c-kda">AVG K/D/A</span><span class="c-dmg">AVG DMG D/T</span><span class="c-apm">APM</span><span class="c-elo">ELO</span>
+    </div>
+    <div class="row"><span class="c-rank">76</span><a class="p-link c-player" href="players/aony.html">aony</a><span class="c-hero"><img class="hicon" width="16" height="16" src="icons/FSA_MCB/shadow.png" alt="" loading="lazy"><a class="p-link" href="heroes/shadow.html">Shadow</a></span><span class="c-wr">15%</span><span class="c-kda">22.0 / 43.4 / 11.0</span><span class="c-dmg">155.1k / 155.3k</span><span class="c-apm">143</span><span class="c-elo">1397</span></div>
+  </div>
+  <div class="pagination">
+<a class="page-nav" href="page-3.html">&lsaquo; Prev</a>
+<a class="page-num" href="index.html">1</a>
+<a class="page-num" href="page-2.html">2</a>
+<a class="page-num" href="page-3.html">3</a>
+<a class="page-num active" href="page-4.html">4</a>
+</div>
+</div>
+<script src="players_index.js"></script>
+<script>
+(function() {
+  var input = document.getElementById("search-input");
+  var box = document.getElementById("search-results");
+  input.addEventListener("input", function() {
+    var q = input.value.trim().toLowerCase();
+    box.innerHTML = "";
+    if (!q || typeof PLAYERS_INDEX === "undefined") { box.style.display = "none"; return; }
+    var matches = PLAYERS_INDEX.filter(function(p) { return p.name.toLowerCase().indexOf(q) !== -1; }).slice(0, 8);
+    if (!matches.length) { box.style.display = "none"; return; }
+    matches.forEach(function(p) {
+      var a = document.createElement("a");
+      a.href = p.href; a.className = "search-result";
+      a.textContent = p.name + " (" + Math.round(p.rating) + ")";
+      box.appendChild(a);
+    });
+    box.style.display = "block";
+  });
+  document.addEventListener("click", function(ev) {
+    if (!input.contains(ev.target) && !box.contains(ev.target)) box.style.display = "none";
+  });
+})();
+</script>
+</body>
+</html>
